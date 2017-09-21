@@ -11,15 +11,15 @@ export default class  StickyComponent extends Component {
 		this.state = {
 			text : "",
 			reminder: false,
-			edit: true
+			edit: false
 		}
 	}
 
 	render() {
 		return (
 			<div>
-				{!this.state.edit && (<StickyContentEdit text={this.state.text} />)}
-				{this.state.edit && (<StickyContentEdit text={this.state.text} />)}
+				{this.state.edit ? (<StickyContentEdit text={this.state.text} />):
+				(<StickyContentDisplay text={this.state.text} />)}
 			</div>
 		)
 	}
