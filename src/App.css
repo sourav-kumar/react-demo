@@ -24,11 +24,12 @@
 }
 
 .sticky-content {
-  width: 300px;
-  height: 300px;
+  width: 230px;
   word-wrap: break-word;
   background-color: yellow; 
   position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .btn-wrapper {
@@ -37,8 +38,61 @@
   right: 2px;
 }
 
-textArea {
-  width : 300px;
-  height: 300px;
-  background-color: yellow;
+.btn-wrapper button, .btn-wrapper input {
+  margin-right: 5px;
 }
+
+#stickyText {
+  width : 230px;
+  height: 230px;
+  background-color: yellow;
+  border: 0;
+  padding: 0;
+}
+
+.sticky-text {
+  overflow-y: auto;
+  height: 230px; 
+}
+
+.sticky-text p {
+  margin: 5px 0;
+}
+
+.react-draggable, .cursor {
+  cursor: move;
+}
+
+.no-cursor {
+  cursor: auto;
+}
+
+.cursor-y {
+  cursor: ns-resize;
+}
+
+.cursor-x {
+  cursor: ew-resize;
+}
+
+.react-draggable strong {
+  background: #ddd;
+  border: 1px solid #999;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 3px 5px;
+  text-align: center;
+}
+
+.box {
+  display: inline-block;
+}
+
+.container-box {
+  background: #fff;
+  border: 1px solid #999; 
+  display: inline-block;
+}
+
+  
