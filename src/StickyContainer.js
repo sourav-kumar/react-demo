@@ -28,7 +28,7 @@ class StickyContainer extends Component {
     render() {
         let self = this;
         return (
-            <div className="container-box" style={{height: '800px', width: '800px', position: 'relative', overflow: 'auto', padding: '0'}}>
+            <div className="container-box" style={{height: '800px', width: '800px', position: 'relative', overflow: 'auto', padding: '10px 0 0'}}>
                 <button className="add-button" onClick={this.handleAddClick}>{"+"}</button>
                 <div style={{height: '1500px', width: '1500px', padding: '10px'}}>
                             {this.state.noteNumbers.map(function(item,i){
