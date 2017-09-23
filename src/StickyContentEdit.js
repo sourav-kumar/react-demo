@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import "./App.css"
 
 
-export default class StickyContentEdit extends Component {
+export default class StickyContentEdit extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleStickyTextChange = this.handleStickyTextChange.bind(this);
-		this.stickText = '';
+		this.stickText = this.props.text;
 	}
 
 	handleSubmit(e) {
@@ -26,7 +26,7 @@ export default class StickyContentEdit extends Component {
 					<textArea id="stickyText" 
 						placeholder="Enter the Text" 
 						onChange={this.handleStickyTextChange} 
-						defaultValue={this.props.text}>
+						defaultValue={this.stickText}>
 					</textArea>
 					<div className="btn-wrapper">
 						<input id="save" value="Save" type="submit" />

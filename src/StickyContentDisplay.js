@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import "./App.css"	
 
 
-export default class StickyContentDisplay extends Component {
+export default class StickyContentDisplay extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.handleEditClick = this.handleEditClick.bind(this);
