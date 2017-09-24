@@ -8,9 +8,11 @@ export default class StickyContentDisplay extends PureComponent {
 		this.handleEditClick = this.handleEditClick.bind(this);
 		this.handleCloseClick = this.handleCloseClick.bind(this);
 		this.showButtons = this.showButtons.bind(this);
+		this.hideButtons = this.hideButtons.bind(this);
+		this.state={
+			isMouseOver: false
+		}
 	}
-
-	btnNode= (ref)=>{this.btnDOMNode = ref}
 
 	handleEditClick(e) {
 		this.props.onEditBtnClick(e);
@@ -21,22 +23,22 @@ export default class StickyContentDisplay extends PureComponent {
 	}
 
 	showButtons() {
-
+		this.setState({isMouseOver: true});
 	}
 
-	componentDidMount() {
-		//console.log("asad");
+	hideButtons() {
+		this.setState({isMouseOver: false});
 	}
 
 	render() {
 		return (
-			<div className="sticky-content" onMouseOver={this.showButtons}>
+			<div className="sticky-content" onMouseEnter={this.showButtons} onMouseLeave={this.hideButtons}>
 				<div className="sticky-text"><p>{this.props.text}</p></div>
-				<div className="btn-wrapper" ref={this.btnNode}>
+				{this.state.isMouseOver && (<div className="btn-wrapper">
 					<button id="edit" type="button" onClick={this.handleEditClick}>{"Edit"}</button>
 					<button id="close" type="button" onClick={this.handleCloseClick}>{"X"}</button>
 					<button id="setReminder" type="button">{"Set Reminder"}</button>
-				</div>
+				</div>)}
 			</div>
 		);
 	}

@@ -38,12 +38,6 @@ export default class  StickyComponent extends PureComponent {
 		this.setState({edit:false});
 	}
 
-	// componentDidUpdate(prevProps, prevState) {
-	// 	if(this.state.closed) {
-	// 		this.stickyContainer.remove();
-	// 	}
-	// }
-
 	removeSticky(e) {
 		this.props.onDestroy(this.props.id);
 	}
@@ -58,6 +52,7 @@ export default class  StickyComponent extends PureComponent {
 
 	render() {
 		const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+		console.log("stickyText")
 		return (
 			<Draggable bounds="parent" {...dragHandlers} disabled={this.state.edit}>	
 				<div id={this.props.id} className="box">
