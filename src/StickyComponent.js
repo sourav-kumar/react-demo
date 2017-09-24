@@ -14,7 +14,6 @@ export default class  StickyComponent extends PureComponent {
 		this.onStart= this.onStart.bind(this);
         this.onStop = this.onStop.bind(this);
 		this.state = {
-			text : "",
 			edit: false,
 			activeDrags: 0	
 		}
@@ -26,7 +25,7 @@ export default class  StickyComponent extends PureComponent {
         this.setState({activeDrags: ++this.state.activeDrags});
     }
 
-      onStop() {
+     onStop() {
         this.setState({activeDrags: --this.state.activeDrags});
     }
 
@@ -35,7 +34,8 @@ export default class  StickyComponent extends PureComponent {
 	}
 
 	saveText(stickyText) {
-		this.setState({edit:false, text: stickyText});
+		this.props.onStickyTextChange(stickyText, this.props.id);
+		this.setState({edit:false});
 	}
 
 	// componentDidUpdate(prevProps, prevState) {
@@ -48,6 +48,14 @@ export default class  StickyComponent extends PureComponent {
 		this.props.onDestroy(this.props.id);
 	}
 
+	componentDidUpdate() {
+		//console.log("asad");
+	}
+
+	componentWillUnmount() {
+		//console.log(this.props.id);
+	}
+
 	render() {
 		const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
 		return (
@@ -55,10 +63,10 @@ export default class  StickyComponent extends PureComponent {
 				<div id={this.props.id} className="box">
 					{this.state.edit ? 
 						(<StickyContentEdit 
-							text={this.state.text} 
+							text={this.props.text} 
 							onSaveBtnClick={this.saveText} />) :  
 						(<StickyContentDisplay 
-						text={this.state.text}
+						text={this.props.text}
 						onEditBtnClick={this.changeEditState}
 						onStickyClose={this.removeSticky} />)
 					}
